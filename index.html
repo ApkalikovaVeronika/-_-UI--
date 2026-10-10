@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carnet de Paris</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+  </head>
+  <body>
+    <div class="paper-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="masthead" aria-label="Carnet de Paris">
+        <p class="folio">Issue 07 / выпуск 07</p>
+        <h1>Carnet de Paris</h1>
+        <p class="subtitle">A notebook for ordinary days / блокнот для обычных дней.</p>
+      </div>
+
+      <nav class="top-nav" aria-label="Разделы страницы">
+        <a href="#atelier">Workshop / мастерская</a>
+        <a href="#collection">Collection / коллекция</a>
+        <a href="#sources">Sources / источники</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="atelier" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">personal archive / личный архив</p>
+          <h2 id="hero-title">A quiet dashboard for notes, weather and found stories.</h2>
+          <p>
+            Собирайте собственный цифровой блокнот: notes, quotes, Paris weather
+            and a small technology chronicle from Hacker News.
+          </p>
+        </div>
+
+        <aside class="archive-grid" aria-label="Визуальный архив проекта">
+          <figure class="archive-tile tile-wide">
+            <img src="assets/archive-01.jpg" alt="Abstract black grain wave" />
+            <figcaption>image 01 / grain study</figcaption>
+          </figure>
+          <figure class="archive-tile tile-tall">
+            <img src="assets/archive-02.jpg" alt="Black and white geometric gradient" />
+            <figcaption>image 02 / light block</figcaption>
+          </figure>
+          <figure class="archive-tile">
+            <img src="assets/archive-03.jpg" alt="Circular black grain composition" />
+            <figcaption>image 03 / dot field</figcaption>
+          </figure>
+          <figure class="archive-tile tile-tall">
+            <img src="assets/archive-04.jpg" alt="Typographic experimental poster" />
+            <figcaption>image 04 / typography</figcaption>
+          </figure>
+          <figure class="archive-tile tile-large">
+            <img src="assets/archive-05.jpg" alt="Black and white fragmented portrait grid" />
+            <figcaption>image 05 / fragmented portrait</figcaption>
+          </figure>
+          <figure class="archive-tile tile-wide">
+            <img src="assets/archive-06.jpg" alt="Black and white open book photograph" />
+            <figcaption>image 06 / paper object</figcaption>
+          </figure>
+        </aside>
+
+        <div class="word-field" aria-hidden="true">
+          <span class="word-fragmenta">fragment</span>
+          <span class="word-brumaire">brumaire</span>
+          <span class="word-nuit">nuit blanche</span>
+          <span class="word-carnet">carnet</span>
+        </div>
+      </section>
+
+      <section class="editor-panel" aria-label="Инструменты композиции">
+        <div class="editor-toolbar" id="editor-toolbar">
+          <button type="button" class="print-button" data-editor-action="edit" aria-pressed="true">Режим: редактирование</button>
+          <button type="button" class="print-button" data-editor-action="upload">+ Изображение</button>
+          <button type="button" class="print-button" data-editor-action="add-text">+ Текст</button>
+          <button type="button" class="print-button" data-editor-action="front" data-needs-selection disabled>На передний план</button>
+          <button type="button" class="print-button" data-editor-action="back" data-needs-selection disabled>На задний план</button>
+          <button type="button" class="print-button" data-editor-action="lock" data-needs-selection disabled>Закрепить / снять</button>
+          <button type="button" class="print-button" data-editor-action="delete" data-needs-selection disabled>Удалить выбранное</button>
+          <button type="button" class="print-button" data-editor-action="reset">Сбросить композицию</button>
+          <input id="image-upload" type="file" accept="image/*" multiple hidden />
+        </div>
+        <p class="editor-help">Перетаскивайте изображения, слова и виджеты мышью. Выберите элемент, чтобы изменить его слой. Стрелки на клавиатуре перемещают выбранный элемент, Shift + стрелка — быстрее. Потяните за угол для изменения размера.</p>
+        <p id="editor-status" class="sr-only" aria-live="polite"></p>
+      </section>
+      <section class="control-panel" aria-labelledby="controls-title">
+        <div>
+          <p class="eyebrow">dashboard tools / инструменты</p>
+          <h2 id="controls-title">Add a widget / добавить блок</h2>
+        </div>
+        <div class="control-buttons" role="group" aria-label="Добавление виджетов">
+          <button type="button" class="print-button" data-widget="weather">Weather / погода</button>
+          <button type="button" class="print-button" data-widget="todo">Notes / список</button>
+          <button type="button" class="print-button" data-widget="quote">Quote / цитата</button>
+          <button type="button" class="print-button" data-widget="news">News / хроника</button>
+        </div>
+      </section>
+
+      <section class="dashboard-section" id="collection" aria-labelledby="collection-title">
+        <div class="section-heading">
+          <p class="eyebrow">active collection / активная коллекция</p>
+          <h2 id="collection-title">Notebook sheets / листы блокнота</h2>
+          <p id="dashboard-count" class="muted" aria-live="polite"></p>
+        </div>
+        <div id="dashboard-grid" class="dashboard-board" aria-live="polite"></div>
+        <p id="empty-dashboard" class="empty-dashboard" hidden>
+          The notebook is empty / блокнот пуст. Add the first widget from the panel above.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="sources">
+      <p>CARNET DE PARIS — HTML, CSS and JavaScript ES6 Modules / учебный проект.</p>
+      <p>
+        Data sources / источники данных: Open-Meteo Weather Forecast API and Hacker News API.
+      </p>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

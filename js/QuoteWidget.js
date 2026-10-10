@@ -1,0 +1,6 @@
+import { UIComponent } from './UIComponent.js';
+export class QuoteWidget extends UIComponent {
+  constructor(config) { super({ ...config, title: 'Citation / цитата', label: 'fragments trouvés / найденные строки' }); this.quotes = ['Il faut encore avoir du chaos en soi pour pouvoir enfanter une étoile qui danse. — Friedrich Nietzsche', 'La beauté est dans la rue. — slogan de Mai 68', 'On ne voit bien qu’avec le cœur. — Antoine de Saint-Exupéry', 'Être absolument moderne. — Arthur Rimbaud']; this.current = -1; }
+  render() { super.render(); if (this.contentElement.childElementCount) return this.element; const quote = document.createElement('blockquote'); quote.className = 'quote-text'; const button = document.createElement('button'); button.type = 'button'; button.className = 'print-button compact'; button.textContent = 'Autre fragment / другая цитата'; this.addEvent(button, 'click', () => this.update(quote)); this.contentElement.append(quote, button); this.update(quote); return this.element; }
+  update(target) { let next = Math.floor(Math.random() * this.quotes.length); if (this.quotes.length > 1 && next === this.current) next = (next + 1) % this.quotes.length; this.current = next; target.textContent = this.quotes[next]; }
+}
